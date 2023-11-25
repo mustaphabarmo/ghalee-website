@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Switcher</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style id="theme-style">
+        /* Default light theme styles */
+        body {
+            background-color: #fff;
+            color: #333;
+        }
+
+        /* Dark theme styles */
+        body.dark-mode {
+            background-color: #333;
+            color: #fff;
+        }
+
+        /* Style for the theme switcher icon */
+        .theme-switch-icon {
+            cursor: pointer;
+            font-size: 24px;
+            color: #333;
+            background-position: top 50% right 30%;
+        }
+        #theme-switch{
+           
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Theme Switcher Example</h1>
+    <i class="far fa-moon" id="theme-switch"></i>
+
+    <script>
+        const themeSwitch = document.getElementById('theme-switch');
+        const themeStyle = document.getElementById('theme-style');
+
+        // Check the user's preference from previous visits
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeSwitch.classList.add('fa-sun'); // Change icon to sun for dark mode
+        }
+
+        // Toggle the theme when the icon is clicked
+        themeSwitch.addEventListener('click', () => {
+            if (document.body.classList.contains('dark-mode')) {
+                document.body.classList.remove('dark-mode');
+                themeSwitch.classList.remove('fa-sun');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.body.classList.add('dark-mode');
+                themeSwitch.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
+
+</body>
+</html>
